@@ -52,7 +52,7 @@ public class Dash extends Ability {
 
             // Ctor
             public DashParticle(SpriteSheet spriteSheet, Random rng, int x, int y) {
-                super (spriteSheet, x, y, rng.nextInt(2), 0);
+                super (spriteSheet, x, y, rng.nextInt(3), 0);
                 angle = (float) rng.nextInt(2 * (int) Math.PI * 1000) / 1000;
                 speed = rng.nextInt(2);
                 removeTime = rng.nextInt(20) + 20;
@@ -94,7 +94,7 @@ public class Dash extends Ability {
         if (inProgress) {
             
             // Particle part
-            int num = rng.nextInt(6) + 3;
+            int num = rng.nextInt(15) + 10;
             SpriteSheet spriteSheet = new SpriteSheet("res/spriteSheets/dashParticles.png", 16, 16);
             for (int i = 0; i < num; i++) {
                 int x = rng.nextInt(32);

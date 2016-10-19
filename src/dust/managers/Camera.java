@@ -2,6 +2,7 @@ package dust.managers;
 
 import dust.components.Component;
 import java.awt.MouseInfo;
+import java.util.Random;
 import javax.swing.JFrame;
 
 /**
@@ -11,8 +12,9 @@ import javax.swing.JFrame;
 public class Camera {
     
     // Fields
-    private static final int mouseEffectVolume = 6;
-    private static final boolean mouseEffect = true;
+    private static final int mouseEffectVolume = 6, shakeEffectVolume = 4;
+    public static boolean mouseEffect = true, shakeEffect = false;
+    private static Random rng = new Random();
     
     public static Component transform = null;
     public static int x = 0, y = 0;
@@ -41,6 +43,14 @@ public class Camera {
                 x += Math.cos(angle) * (dist / mouseEffectVolume);
                 y += Math.sin(angle) * (dist / mouseEffectVolume);
                 
+            }
+            
+            // Shake Effect
+            if (shakeEffect) {
+                float angle = (float) rng.nextInt(2 * (int) Math.PI * 1000) / 1000;
+                int dist = rng.nextInt(shakeEffectVolume - 1) + 1;
+                x += Math.cos(angle) * dist;
+                y += Math.sin(angle) * dist;
             }
             
         }

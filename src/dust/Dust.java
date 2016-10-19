@@ -22,7 +22,7 @@ public class Dust extends Canvas implements Runnable {
     // Fields
     public static final int SCREENWIDTH = 800;
     public static final int SCREENHEIGHT = 600;
-    private static final String TITLE = "BitNap Studios - Dust V0.01";
+    private static final String TITLE = "BitNap Studios - Dust V0.0.2";
     
     private final JFrame frame;
     private final Thread thread;

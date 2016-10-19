@@ -13,6 +13,8 @@ public class InputManager implements MouseListener, KeyListener {
     
     // Fields
     public static boolean
+            lbPressed = false,
+            
             wPressed = false,
             sPressed = false,
             aPressed = false,
@@ -27,10 +29,12 @@ public class InputManager implements MouseListener, KeyListener {
 
     @Override
     public void mousePressed(MouseEvent me) {
+        if (me.getButton() == 1) lbPressed = true;
     }
 
     @Override
     public void mouseReleased(MouseEvent me) {
+        if (me.getButton() == 1) lbPressed = false;
     }
 
     @Override
