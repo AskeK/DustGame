@@ -2,9 +2,11 @@ package dust.mechanicrelated;
 
 import dust.components.Component;
 import dust.components.Player;
+import dust.components.Tile;
 import dust.gfx.SpriteSheet;
 import dust.managers.Camera;
 import java.awt.MouseInfo;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JFrame;
@@ -111,9 +113,32 @@ public class Dash extends Ability {
             
             float angle = (float) Math.atan2(mouseY, mouseX);
             
-            player.x += Math.cos(angle) * (dist / ticks);
-            player.y += Math.sin(angle) * (dist / ticks);
-            counter += dist / ticks;
+            boolean collision = false;
+            for (Component c : scene) {
+                
+                Tile tile = null;
+                try { tile = (Tile) c; }
+                catch (Exception e) { }
+                
+                if (tile != null && tile.solid) {
+                    if (new Rectangle(player.x + (int) (Math.cos(angle) * (dist / ticks)),
+                            player.y + (int) (Math.sin(angle) * (dist / ticks)),
+                            player.spriteSheet.tileSizeX, 
+                            player.spriteSheet.tileSizeY)
+                            .intersects(tile.mask)) {
+                        collision = true;
+                    }
+                }
+            }
+            
+            if ( ! collision ) {
+                player.x += Math.cos(angle) * (dist / ticks);
+                player.y += Math.sin(angle) * (dist / ticks);
+                counter += dist / ticks;
+            } else { 
+                inProgress = false; 
+                counter = 0;
+            }
             
             if (counter >= dist) {
                 counter = 0;

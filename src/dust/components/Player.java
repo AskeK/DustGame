@@ -168,9 +168,27 @@ public class Player extends Component {
                     this.y + this.spriteSheet.tileSizeY / 2,
                     0, 0, angle, 10));
             
-            this.x -= Math.cos(angle) * recoil;
-            this.y -= Math.sin(angle) * recoil;
+            boolean collision = false;
+            for (Component c : scene) {
+                Tile tile = null;
+                try { tile = (Tile) c; }
+                catch (Exception e) { }
+                
+                if (tile != null && tile.solid) {
+                    if (new Rectangle(this.x - (int) (Math.cos(angle) * recoil), 
+                            this.y - (int) (Math.sin(angle) * recoil),
+                            this.spriteSheet.tileSizeX, 
+                            this.spriteSheet.tileSizeY)
+                            .intersects(tile.mask)) {
+                        collision = true;
+                    }
+                }
+            };
             
+            if ( ! collision ) {
+                this.x -= Math.cos(angle) * recoil;
+                this.y -= Math.sin(angle) * recoil;
+            }
         }
         
         Camera.shakeEffect = InputManager.lbPressed;

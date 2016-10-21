@@ -6,12 +6,16 @@ import dust.gfx.SpriteSheet;
 import dust.managers.Camera;
 import dust.managers.InputManager;
 import dust.managers.SceneManager;
+import dust.tilemapeditor.ComponentInfo;
+import dust.tilemapeditor.TileMapInstance;
 import dust.ui.Crosshair;
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.util.HashMap;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  *
@@ -35,6 +39,13 @@ public class Dust extends Canvas implements Runnable {
     // Ctor
     private Dust() {
         
+        // TileMapEditor
+        TileMapInstance.AddSpriteSheet("Outdoor", new SpriteSheet("res/spriteSheets/outdoor.png", 32, 32));
+        
+        TileMapInstance.AddComponent("StoneWall", new ComponentInfo("Tile", "Outdoor", 0, 0, 1, 0));
+        TileMapInstance.AddComponent("Grass", new ComponentInfo("Tile", "Outdoor", 0, 0, 0, 0));
+        
+        // Init
         frame = new JFrame(TITLE);
         thread = new Thread(this);
         thread.setName("Dust main thread");
@@ -84,7 +95,24 @@ public class Dust extends Canvas implements Runnable {
     }
     
     // Tick
+    boolean tileMap = false;
+    int counter = 60;
     public void Tick() {
+        // Starts new tilemapeditor instance
+        if (InputManager.ctrlPressed &&
+            InputManager.altPressed &&
+                ! tileMap ) {
+            
+            InputManager.ctrlPressed = false;
+            InputManager.altPressed = false;
+            tileMap = true;
+            new TileMapInstance();
+        
+        }
+        
+        counter++;
+        if (counter >= 60) tileMap = false;
+        
         sceneManager.Tick();
         Camera.Tick(frame);
         Crosshair.Tick(frame);
@@ -123,7 +151,7 @@ public class Dust extends Canvas implements Runnable {
     
     //  Entry point
     public static void main(String[] args) {
-        Dust instance = new Dust();
+        new Dust();
     }
     
 }

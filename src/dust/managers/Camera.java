@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 public class Camera {
     
     // Fields
-    private static final int mouseEffectVolume = 6, shakeEffectVolume = 4;
+    private static final int mouseEffectVolume = 3, shakeEffectVolume = 6;
     public static boolean mouseEffect = true, shakeEffect = false;
     private static Random rng = new Random();
     

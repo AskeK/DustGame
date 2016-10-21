@@ -12,14 +12,22 @@ import javax.swing.JComponent;
 public class CustomImage extends JComponent {
     
     // Fields
-    private BufferedImage image;
+    public BufferedImage image;
     public int[] pixels;
-    private final int xOffset, yOffset;
+    public final int xOffset, yOffset;
     private final int transparent = 0xff00ff;
     
     // Ctor
     public CustomImage(int width, int height, int xOffset, int yOffset) {
         image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        pixels = ( (DataBufferInt) image.getRaster().getDataBuffer() ).getData();
+        this.xOffset = xOffset;
+        this.yOffset = yOffset;
+    }
+    
+    // Ctor
+    public CustomImage(int width, int height, int xOffset, int yOffset, boolean ARGB) {
+        image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         pixels = ( (DataBufferInt) image.getRaster().getDataBuffer() ).getData();
         this.xOffset = xOffset;
         this.yOffset = yOffset;

@@ -3,14 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/askek/OneDrive/Documents/NetBeansProjects/Dust/src/dust/components/Tile.java</file>
-            <file>file:/C:/Users/askek/OneDrive/Documents/NetBeansProjects/Dust/src/dust/gfx/CustomImage.java</file>
-            <file>file:/C:/Users/askek/OneDrive/Documents/NetBeansProjects/Dust/src/dust/managers/InputManager.java</file>
+            <file>file:/C:/Users/askek/OneDrive/Documents/NetBeansProjects/Dust/src/dust/tilemapeditor/TileMapInstance.java</file>
+            <file>file:/C:/Users/askek/OneDrive/Documents/NetBeansProjects/Dust/src/dust/tilemapeditor/SelectArea.java</file>
             <file>file:/C:/Users/askek/OneDrive/Documents/NetBeansProjects/Dust/src/dust/components/Component.java</file>
             <file>file:/C:/Users/askek/OneDrive/Documents/NetBeansProjects/Dust/src/dust/scenes/Scene.java</file>
+            <file>file:/C:/Users/askek/OneDrive/Documents/NetBeansProjects/Dust/src/dust/mechanicrelated/Dash.java</file>
+            <file>file:/C:/Users/askek/OneDrive/Documents/NetBeansProjects/Dust/src/dust/tilemapeditor/ComponentInfo.java</file>
+            <file>file:/C:/Users/askek/OneDrive/Documents/NetBeansProjects/Dust/src/dust/managers/SceneManager.java</file>
+            <file>file:/C:/Users/askek/OneDrive/Documents/NetBeansProjects/Dust/src/dust/components/Tile.java</file>
+            <file>file:/C:/Users/askek/OneDrive/Documents/NetBeansProjects/Dust/src/dust/tilemapeditor/DrawArea.java</file>
+            <file>file:/C:/Users/askek/OneDrive/Documents/NetBeansProjects/Dust/src/dust/gfx/CustomImage.java</file>
+            <file>file:/C:/Users/askek/OneDrive/Documents/NetBeansProjects/Dust/src/dust/managers/InputManager.java</file>
+            <file>file:/C:/Users/askek/OneDrive/Documents/NetBeansProjects/Dust/src/dust/managers/Camera.java</file>
+            <file>file:/C:/Users/askek/OneDrive/Documents/NetBeansProjects/Dust/src/dust/scenes/TileMap.java</file>
+            <file>file:/C:/Users/askek/OneDrive/Documents/NetBeansProjects/Dust/src/dust/ui/Crosshair.java</file>
             <file>file:/C:/Users/askek/OneDrive/Documents/NetBeansProjects/Dust/src/dust/gfx/SpriteSheet.java</file>
             <file>file:/C:/Users/askek/OneDrive/Documents/NetBeansProjects/Dust/src/dust/components/Player.java</file>
-            <file>file:/C:/Users/askek/OneDrive/Documents/NetBeansProjects/Dust/src/dust/managers/SceneManager.java</file>
             <file>file:/C:/Users/askek/OneDrive/Documents/NetBeansProjects/Dust/src/dust/Dust.java</file>
         </group>
     </open-files>

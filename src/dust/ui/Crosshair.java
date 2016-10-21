@@ -36,8 +36,8 @@ public class Crosshair {
         
         float angle = (float) Math.atan2(mouseY, mouseX);
         int dist = (int) Math.sqrt(mouseX * mouseX + mouseY * mouseY);
-        x = (int) (player.x - Camera.x + player.spriteSheet.tileSizeX / 2 + Math.cos(angle) * dist / 3) - 8;
-        y = (int) (player.y - Camera.y + player.spriteSheet.tileSizeY / 2 + Math.sin(angle) * dist / 3) - 8;
+        x = (int) (player.x - Camera.x + player.spriteSheet.tileSizeX / 2 + Math.cos(angle) * dist / 2) - 8;
+        y = (int) (player.y - Camera.y + player.spriteSheet.tileSizeY / 2 + Math.sin(angle) * dist / 2) - 8;
         
     }
     

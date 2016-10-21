@@ -47,3 +47,4 @@ Temporary Items
 .apdisk
 test/dust/mechanicrelated/DashNGTest.java
 test/dust/mechanicrelated/DashTest.java
+/dist/
