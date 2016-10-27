@@ -28,8 +28,8 @@ public class SelectArea {
         for (HashMap.Entry<String, ComponentInfo> entry : TileMapInstance.GetAllComponents().entrySet()) {
             components.add(new ComponentInfo(
                     entry.getValue(),
-                    (counter % 8) * (scanWidth / 8) + 32,
-                    (counter / 8) * 64 + 32));
+                    (counter % 6) * ((scanWidth - 64) / 6) + 32 + (counter % 6 * ((scanWidth / 6 / 2) / 6)),
+                    (counter / 6) * 64 + 32));
             counter++;
         }
         

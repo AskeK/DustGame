@@ -26,6 +26,7 @@ public class InputManager implements MouseListener, KeyListener {
     
             spacePressed = false,
             ctrlPressed = false,
+            shiftPressed = false,
             altPressed = false;
     
     public InputManager() {}
@@ -76,7 +77,9 @@ public class InputManager implements MouseListener, KeyListener {
         
         if (ke.getKeyChar() == ' ') spacePressed = true;
         if (ke.getKeyCode() == 17) ctrlPressed = true;
+        if (ke.getKeyCode() == 16) shiftPressed = true;
         if (ke.getKeyCode() == 18) altPressed = true;
+        
     }
 
     @Override
@@ -88,6 +91,7 @@ public class InputManager implements MouseListener, KeyListener {
         
         if (ke.getKeyChar() == ' ') spacePressed = false;
         if (ke.getKeyCode() == 17) ctrlPressed = false;
+        if (ke.getKeyCode() == 16) shiftPressed = false;
         if (ke.getKeyCode() == 18) altPressed = false;
     }
     

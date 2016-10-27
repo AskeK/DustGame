@@ -16,7 +16,7 @@ import javax.swing.JFrame;
 public class DrawArea {
     
     // Fields
-    private static ArrayList<ComponentInfo> components;
+    public static ArrayList<ComponentInfo> components;
     public static ComponentInfo currentComponent;
     private static int[][] cursorPixels = null;
     
@@ -64,9 +64,7 @@ public class DrawArea {
         // Draw mechanic
         if (InputManager.lbPressed) {
             
-           
-            
-            if ( ! InputManager.altPressed ) {
+            if ( ! InputManager.shiftPressed ) {
                 ArrayList<ComponentInfo> buffer = new ArrayList<>();
                 for (ComponentInfo c : components) {
                     int tsX = TileMapInstance.GetSpriteSheet(c.spriteSheet).tileSizeX;

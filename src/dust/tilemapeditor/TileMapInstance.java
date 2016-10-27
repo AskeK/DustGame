@@ -8,6 +8,8 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
@@ -71,12 +73,19 @@ public class TileMapInstance extends Canvas implements Runnable {
         frame.setResizable(false);
         
         JPanel panel = new JPanel();
-        panel.setBackground(new Color(70, 70, 70));
+        panel.setBackground(Color.white);
         
         importURL = new JTextField("res/tileMaps/", 20);
         importAccept = new JButton("Import");
+        importAccept.addActionListener((ActionEvent ae) -> {
+            DrawArea.components = Porting.Import(importURL.getText());
+        });
+        
         exportURL = new JTextField("res/tileMaps/", 20);
         exportAccept = new JButton("Export");
+        exportAccept.addActionListener((ActionEvent ae) -> {
+            Porting.Export(exportURL.getText(), DrawArea.components);
+        });
         
         panel.add(importURL, BorderLayout.NORTH);
         panel.add(importAccept, BorderLayout.NORTH);
@@ -88,7 +97,7 @@ public class TileMapInstance extends Canvas implements Runnable {
         JPanel customPanel = new JPanel();
         customPanel.add(drawArea);
         customPanel.add(selectArea);
-        customPanel.setBackground(new Color(70, 70, 70));
+        customPanel.setBackground(Color.white);
         
         frame.getContentPane().add(customPanel);
         
@@ -136,10 +145,10 @@ public class TileMapInstance extends Canvas implements Runnable {
     // Tick
     private void Tick() { 
         for (int i = 0; i < drawArea.pixels.length; i++)
-            drawArea.pixels[i] = 0xffffffff;
+            drawArea.pixels[i] = 0xffaaaaaa;
         
         for (int i = 0; i < selectArea.pixels.length; i++)
-            selectArea.pixels[i] = 0xffffff;
+            selectArea.pixels[i] = 0xaaaaaa;
         
         SelectArea.Tick(frame, selectArea);
         DrawArea.Tick(frame, drawArea);

@@ -20,7 +20,7 @@ public class SceneManager {
     public SceneManager(JFrame frame) {
         currentScene = 0;
         scenes = new Scene[] {
-            new TileMap("res/maps/testImgMap.png", 0, 0, frame),
+            new TileMap("res/tileMaps/testImgMap.png", 0, 0, frame),
         };
     }
     

@@ -1,7 +1,6 @@
 package dust.tilemapeditor;
 
 import dust.components.Component;
-import dust.gfx.SpriteSheet;
 
 /**
  *
