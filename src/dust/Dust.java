@@ -19,10 +19,12 @@ import javax.swing.JFrame;
  */
 public class Dust extends Canvas implements Runnable {
     
+    public static GameStates gameState = GameStates.RUNNING;
+    
     // Fields
     public static final int SCREENWIDTH = 800;
     public static final int SCREENHEIGHT = 600;
-    private static final String TITLE = "BitNap Studios - Dust V0.0.2";
+    private static final String TITLE = "BitNap Studios - Dust V.0.0.4";
     
     private final JFrame frame;
     private final Thread thread;
@@ -44,7 +46,7 @@ public class Dust extends Canvas implements Runnable {
                 new ComponentInfo("Tile", "Outdoor", 0, 0, 1, 0, true));
         
         TileMapInstance.AddComponent("Grass", 
-                new ComponentInfo("Tile", "Outdoor", 0, 0, 0, 1, false));
+                new ComponentInfo("Tile", "Outdoor", 0, 0, 0, 0, false));
         
         TileMapInstance.AddComponent("Grass2", 
                 new ComponentInfo("Tile", "Outdoor", 0, 0, 3, 0, false));
@@ -72,6 +74,18 @@ public class Dust extends Canvas implements Runnable {
         
         TileMapInstance.AddComponent("Grass10", 
                 new ComponentInfo("Tile", "Outdoor", 0, 0, 5, 2, false));
+        
+        TileMapInstance.AddComponent("Grass11", 
+                new ComponentInfo("Tile", "Outdoor", 0, 0, 0, 1, false));
+        
+        TileMapInstance.AddComponent("Grass12", 
+                new ComponentInfo("Tile", "Outdoor", 0, 0, 0, 2, false));
+        
+        TileMapInstance.AddComponent("Grass13", 
+                new ComponentInfo("Tile", "Outdoor", 0, 0, 1, 1, false));
+        
+        TileMapInstance.AddComponent("Grass14", 
+                new ComponentInfo("Tile", "Outdoor", 0, 0, 1, 2, false));
         
         // Init
         frame = new JFrame(TITLE);
@@ -113,8 +127,10 @@ public class Dust extends Canvas implements Runnable {
             
             if (counter >= 1000000000.0 / 60.0) {
                 counter = 0;
+                
                 Tick();
                 Render();
+                
             }
         }
         
@@ -123,27 +139,24 @@ public class Dust extends Canvas implements Runnable {
     }
     
     // Tick
-    boolean tileMap = false;
-    int counter = 60;
     public void Tick() {
-        // Starts new tilemapeditor instance
-        if (InputManager.ctrlPressed &&
-            InputManager.altPressed &&
-                ! tileMap ) {
-            
-            InputManager.ctrlPressed = false;
-            InputManager.altPressed = false;
-            tileMap = true;
-            new TileMapInstance();
         
+        if (gameState == GameStates.RUNNING) {
+            // Starts new tilemapeditor instance
+            if (InputManager.ctrlPressed &&
+                InputManager.altPressed) {
+
+                // Pauses Game
+                gameState = GameStates.UNFOCUSED;
+                new TileMapInstance();
+
+            }
+
+            sceneManager.Tick();
+            Camera.Tick(frame);
+            Crosshair.Tick(frame);
         }
         
-        counter++;
-        if (counter >= 60) tileMap = false;
-        
-        sceneManager.Tick();
-        Camera.Tick(frame);
-        Crosshair.Tick(frame);
     }
     
     // Render

@@ -21,7 +21,7 @@ public class SceneManager {
     public SceneManager(JFrame frame) {
         currentScene = 0;
         scenes = new Scene[] {
-            new Dungeon(frame, 4),
+            new Dungeon(frame, 4, 1),
         };
     }
     

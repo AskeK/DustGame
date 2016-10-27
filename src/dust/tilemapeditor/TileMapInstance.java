@@ -1,5 +1,7 @@
 package dust.tilemapeditor;
 
+import dust.Dust;
+import dust.GameStates;
 import dust.gfx.CustomImage;
 import dust.gfx.SpriteSheet;
 import dust.managers.InputManager;
@@ -50,8 +52,13 @@ public class TileMapInstance extends Canvas implements Runnable {
             public void windowClosing(WindowEvent we) {}
             @Override
             public void windowClosed(WindowEvent we) {
-                try { thread.join(); }
-                catch (Exception e) {}
+                
+                if (Dust.gameState == GameStates.UNFOCUSED) {
+                    Dust.gameState = GameStates.RUNNING;
+                }
+                
+                frame.dispose();
+                
             }
             @Override
             public void windowIconified(WindowEvent we) {}
