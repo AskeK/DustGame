@@ -51,57 +51,59 @@ public class DrawArea {
         int mouseY = MouseInfo.getPointerInfo().getLocation().y 
                 - frame.getY() - parent.yOffset - 26;
         
-        // Grid snap
-        if ( ! InputManager.ctrlPressed ) {
-            mouseX = (int) (mouseX / 32) * 32;
-            mouseY = (int) (mouseY / 32) * 32;
-        }
-        
-        // Sets cursor pos
-        currentComponent.x = mouseX;
-        currentComponent.y = mouseY;
-        
-        // Draw mechanic
-        if (InputManager.lbPressed) {
+        if (mouseX >= 0 && mouseX < parent.image.getWidth() &&
+            mouseY >= 0 && mouseY < parent.image.getHeight()) {
             
-            if ( ! InputManager.shiftPressed ) {
+            // Grid snap
+            if ( ! InputManager.ctrlPressed ) {
+                mouseX = (int) (mouseX / 32) * 32;
+                mouseY = (int) (mouseY / 32) * 32;
+            }
+
+            // Sets cursor pos
+            currentComponent.x = mouseX;
+            currentComponent.y = mouseY;
+
+            // Draw mechanic
+            if (InputManager.lbPressed) {
+
+                if ( ! InputManager.shiftPressed ) {
+                    ArrayList<ComponentInfo> buffer = new ArrayList<>();
+                    for (ComponentInfo c : components) {
+                        int tsX = TileMapInstance.GetSpriteSheet(c.spriteSheet).tileSizeX;
+                        int tsY = TileMapInstance.GetSpriteSheet(c.spriteSheet).tileSizeY;
+                        if (new Rectangle(mouseX, mouseY, 32, 32)
+                                .intersects(new Rectangle(c.x, c.y, tsX, tsY))) {
+
+                               buffer.add(c);
+
+                        }
+                    }
+
+                    buffer.stream().forEach((c) -> { components.remove(c); });
+                }
+
+                components.add(new ComponentInfo(currentComponent));
+
+            }
+
+            // Delete mechanic
+            if (InputManager.rbPressed) {
                 ArrayList<ComponentInfo> buffer = new ArrayList<>();
                 for (ComponentInfo c : components) {
-                    int tsX = TileMapInstance.GetSpriteSheet(c.spriteSheet).tileSizeX;
-                    int tsY = TileMapInstance.GetSpriteSheet(c.spriteSheet).tileSizeY;
+                    SpriteSheet ss = TileMapInstance.GetSpriteSheet(c.spriteSheet);
                     if (new Rectangle(mouseX, mouseY, 32, 32)
-                            .intersects(new Rectangle(c.x, c.y, tsX, tsY))) {
-                        
-                           buffer.add(c);
-                    
+                            .intersects(new Rectangle(c.x, c.y, 
+                                    ss.tileSizeX, ss.tileSizeY))) {
+
+                        buffer.add(c);
+
                     }
                 }
-                
+
                 buffer.stream().forEach((c) -> { components.remove(c); });
             }
-            
-            components.add(new ComponentInfo(currentComponent));
-            
         }
-        
-        // Delete mechanic
-        if (InputManager.rbPressed) {
-            ArrayList<ComponentInfo> buffer = new ArrayList<>();
-            for (ComponentInfo c : components) {
-                SpriteSheet ss = TileMapInstance.GetSpriteSheet(c.spriteSheet);
-                if (new Rectangle(mouseX, mouseY, 32, 32)
-                        .intersects(new Rectangle(c.x, c.y, 
-                                ss.tileSizeX, ss.tileSizeY))) {
-                    
-                    buffer.add(c);
-                    
-                }
-            }
-            
-            buffer.stream().forEach((c) -> { components.remove(c); });
-        }
-        
-        
     }
     
     // Render

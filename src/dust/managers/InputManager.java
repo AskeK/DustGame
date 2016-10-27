@@ -13,7 +13,7 @@ import javax.swing.JComponent;
 public class InputManager implements MouseListener, KeyListener {
     
     // Fields
-    private static JComponent parent;
+    private static JComponent parent = null;
     public static boolean
             lbPressed = false,
             rbPressed = false,
@@ -57,7 +57,8 @@ public class InputManager implements MouseListener, KeyListener {
 
     @Override
     public void mouseEntered(MouseEvent me) {
-        parent.requestFocus();
+        if (parent != null)
+            parent.requestFocus();
     }
 
     @Override

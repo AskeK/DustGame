@@ -39,15 +39,19 @@ public class Porting {
             String[] elements = strdata.split("[|]");
             for (String element : elements) {
                 String[] args = element.split("[:]");
-            
-                if (args.length >= 6) {
+                
+                if (args.length >= 7) {
+                    
+                    boolean solid = false;
+                    if ("true".equals(args[6].toLowerCase())) solid = true;
                     
                     ComponentInfo info = new ComponentInfo(
                             args[0], args[1],
                             Integer.decode(args[2]),
                             Integer.decode(args[3]),
                             Integer.decode(args[4]),
-                            Integer.decode(args[5])
+                            Integer.decode(args[5]),
+                            solid
                     );
                     
                     response.add(info);
@@ -58,7 +62,7 @@ public class Porting {
             }
         
         } catch (FileNotFoundException ex) { } catch (IOException ex) { }
-            
+         
         System.out.println("Imported: " + URL);
         return response;
         
@@ -80,7 +84,8 @@ public class Porting {
                 data += c.x + ":";
                 data += c.y + ":";
                 data += c.spriteSheetX + ":";
-                data += c.spriteSheetY + "|";
+                data += c.spriteSheetY + ":";
+                data += c.solid + "|";
             }
             
             try (FileOutputStream output = new FileOutputStream(file)) {

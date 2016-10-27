@@ -2,6 +2,7 @@ package dust.managers;
 
 import dust.components.Component;
 import dust.gfx.CustomImage;
+import dust.scenes.Dungeon;
 import dust.scenes.Scene;
 import dust.scenes.TileMap;
 import javax.swing.JFrame;
@@ -20,7 +21,7 @@ public class SceneManager {
     public SceneManager(JFrame frame) {
         currentScene = 0;
         scenes = new Scene[] {
-            new TileMap("res/tileMaps/testImgMap.png", 0, 0, frame),
+            new Dungeon(frame, 4),
         };
     }
     

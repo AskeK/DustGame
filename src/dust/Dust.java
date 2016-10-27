@@ -38,40 +38,40 @@ public class Dust extends Canvas implements Runnable {
         // TileMapEditor
         TileMapInstance.AddSpriteSheet("Outdoor", new SpriteSheet("res/spriteSheets/outdoor.png", 32, 32));
         TileMapInstance.AddSpriteSheet("Player", new SpriteSheet("res/spriteSheets/player.png", 32, 32));
-        TileMapInstance.AddComponent("Player", new ComponentInfo("Player", "Player", 0, 0, 0, 0));
+        TileMapInstance.AddComponent("Player", new ComponentInfo("Player", "Player", 0, 0, 0, 0, false));
         
         TileMapInstance.AddComponent("StoneWall", 
-                new ComponentInfo("Tile", "Outdoor", 0, 0, 1, 0));
+                new ComponentInfo("Tile", "Outdoor", 0, 0, 1, 0, true));
         
         TileMapInstance.AddComponent("Grass", 
-                new ComponentInfo("Tile", "Outdoor", 0, 0, 0, 1));
+                new ComponentInfo("Tile", "Outdoor", 0, 0, 0, 1, false));
         
         TileMapInstance.AddComponent("Grass2", 
-                new ComponentInfo("Tile", "Outdoor", 0, 0, 3, 0));
+                new ComponentInfo("Tile", "Outdoor", 0, 0, 3, 0, false));
         
         TileMapInstance.AddComponent("Grass3", 
-                new ComponentInfo("Tile", "Outdoor", 0, 0, 3, 1));
+                new ComponentInfo("Tile", "Outdoor", 0, 0, 3, 1, false));
         
         TileMapInstance.AddComponent("Grass4", 
-                new ComponentInfo("Tile", "Outdoor", 0, 0, 3, 2));
+                new ComponentInfo("Tile", "Outdoor", 0, 0, 3, 2, false));
         
         TileMapInstance.AddComponent("Grass5", 
-                new ComponentInfo("Tile", "Outdoor", 0, 0, 4, 0));
+                new ComponentInfo("Tile", "Outdoor", 0, 0, 4, 0, false));
         
         TileMapInstance.AddComponent("Grass6", 
-                new ComponentInfo("Tile", "Outdoor", 0, 0, 4, 1));
+                new ComponentInfo("Tile", "Outdoor", 0, 0, 4, 1, false));
         
         TileMapInstance.AddComponent("Grass7", 
-                new ComponentInfo("Tile", "Outdoor", 0, 0, 4, 2));
+                new ComponentInfo("Tile", "Outdoor", 0, 0, 4, 2, false));
         
         TileMapInstance.AddComponent("Grass8", 
-                new ComponentInfo("Tile", "Outdoor", 0, 0, 5, 0));
+                new ComponentInfo("Tile", "Outdoor", 0, 0, 5, 0, false));
         
         TileMapInstance.AddComponent("Grass9", 
-                new ComponentInfo("Tile", "Outdoor", 0, 0, 5, 1));
+                new ComponentInfo("Tile", "Outdoor", 0, 0, 5, 1, false));
         
         TileMapInstance.AddComponent("Grass10", 
-                new ComponentInfo("Tile", "Outdoor", 0, 0, 5, 2));
+                new ComponentInfo("Tile", "Outdoor", 0, 0, 5, 2, false));
         
         // Init
         frame = new JFrame(TITLE);

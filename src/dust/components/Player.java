@@ -42,6 +42,7 @@ public class Player extends Component {
         this.frame = frame;
         velX = 0; velY = 0;
         velXGoal = 0; velYGoal = 0;
+    
     }
     
     // Interpolate
@@ -79,8 +80,11 @@ public class Player extends Component {
         scene.stream().forEach((c) -> {
             
             Tile tile = null;
-            try { tile = (Tile) c; }
-            catch (Exception e) { e.printStackTrace(); }
+            
+            if (c.getClass() != Player.class) {
+                try { tile = (Tile) c; }
+                catch (Exception e) { }
+            }
             
             if (tile != null && tile.solid) {
                 
